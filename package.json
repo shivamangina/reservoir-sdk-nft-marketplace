@@ -2,7 +2,6 @@
   "name": "node-typescript-boilerplate",
   "version": "0.0.1",
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript with watch mode. build using Hapi",
-  "type": "module",
   "engines": {
     "node": ">= 18.12 <19"
   },
@@ -12,17 +11,18 @@
     "@hapi/hapi": "^21.3.2",
     "@reservoir0x/reservoir-sdk": "^1.5.1",
     "@types/hapi": "^18.0.11",
+    "node-fetch": "^2.7.0",
     "tslib": "~2.6",
     "viem": "^1.16.3"
   },
   "scripts": {
-    "start": "node build/src/main.js",
+    "start": "node build/src/index.js",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -w -p tsconfig.json",
     "lint": "eslint . --ext .ts --ext .mts",
     "prettier": "prettier --config .prettierrc --write .",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"tsc -w -p tsconfig.json\" \"nodemon build/src/main.js\""
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"tsc -w -p tsconfig.json\" \"nodemon build/src/index.js\""
   },
   "devDependencies": {
     "@types/concurrently": "^7.0.0",

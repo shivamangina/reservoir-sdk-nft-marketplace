@@ -1,4 +1,5 @@
 import Hapi from '@hapi/hapi';
+import { getTokens, getOrders, buyToken } from './controller/reservior.js';
 
 const init = async () => {
   const server = Hapi.server({
@@ -14,6 +15,26 @@ const init = async () => {
         message: 'Server is running!',
       };
     },
+  });
+
+  // Add your routes here
+
+  server.route({
+    method: 'GET',
+    path: '/buy-token',
+    handler: buyToken,
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/tokens',
+    handler: getTokens,
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/orders',
+    handler: getOrders,
   });
 
   await server.start();
